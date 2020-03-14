@@ -46,6 +46,9 @@ namespace XO
             while (true)
             {
                 GetStep(int.Parse(Console.ReadLine()));
+                Console.SetCursorPosition(0, 8 + _count);
+
+
                 if (_count > 4)
                 {
                     if (GameLogic(out char value))
@@ -54,35 +57,32 @@ namespace XO
                         break;
                     }
                 }
-                if (_count == 8)
+                if (_count == 9)
                 {
                     Console.WriteLine("No win");
                     break;
                 }
-
-                //set cursor to default
-                Console.SetCursorPosition(0, 8 + _count);
 
             }
         }
         public bool GameLogic(out char value)
         {
             if (_log[4] != 0 && _log[4] == _log[0] && _log[4] == _log[8]
-                             || _log[4] == _log[2] && _log[4] == _log[6]
-                             || _log[4] == _log[3] && _log[4] == _log[5]
-                             || _log[4] == _log[1] && _log[4] == _log[7])
+             || _log[4] != 0 && _log[4] == _log[2] && _log[4] == _log[6]
+             || _log[4] != 0 && _log[4] == _log[3] && _log[4] == _log[5]
+             || _log[4] != 0 && _log[4] == _log[1] && _log[4] == _log[7])
             {
                 value = _log[4];
                 return true;
             }
             else if (_log[0] != 0 && _log[0] == _log[1] && _log[0] == _log[2]
-                                  || _log[0] == _log[3] && _log[0] == _log[6])
+                  || _log[0] != 0 && _log[0] == _log[3] && _log[0] == _log[6])
             {
                 value = _log[0];
                 return true;
             }
             else if (_log[8] != 0 && _log[8] == _log[6] && _log[8] == _log[7]
-                                  || _log[8] == _log[2] && _log[8] == _log[5])
+                  || _log[8] != 0 && _log[8] == _log[2] && _log[8] == _log[5])
             {
                 value = _log[8];
                 return true;
